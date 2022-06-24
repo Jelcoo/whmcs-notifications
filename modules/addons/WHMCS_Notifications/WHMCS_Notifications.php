@@ -19,7 +19,7 @@ function WHMCS_Notifications_config()
         'description' => 'This module send notifications using a Discord webhook.',
         'author' => 'Jelcoo',
         'language' => 'english',
-        'version' => '0.0.1',
+        'version' => 'dev',
         'fields' => [
             'url' => [
                 'FriendlyName' => 'WHMCS URL',

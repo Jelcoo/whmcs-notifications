@@ -1,0 +1,37 @@
+name: Create Release
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Create release branch and bump version
+        env:
+          REF: ${{ github.ref }}
+        run: |
+          BRANCH=release/${REF:10}
+          git config --local user.email "jelcovthull@gmail.com"
+          git config --local user.name "Jelco Deployment"
+          git checkout -b $BRANCH
+          git push -u origin $BRANCH
+          sed -i "s/'version' => 'dev',/'version' => '${REF:11}',/" modules/addons/WHMCS_Notifications/WHMCS_Notifications.php
+          git add modules/addons/WHMCS_Notifications/WHMCS_Notifications.php
+          git commit -m "bump version for release"
+          git push
+      - name: Create release archive
+        run: |
+          rm -rf README.md
+          zip whmcs-notifications-${REF:11}.zip *
+      - name: Create release
+        id: upload-release-archive
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: panel.tar.gz
