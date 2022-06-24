@@ -18,10 +18,10 @@ function isEnabled($type) {
     }
 }
 
-function getSetting($setting_name) {
+function getSetting($name) {
     $setting = Capsule::table('tbladdonmodules')
         ->where('module', 'WHMCS_Notifications')
-        ->where('setting', $setting_name)
+        ->where('setting', $name)
         ->first();
 
     return $setting->value;
@@ -45,4 +45,14 @@ function send($data) {
 	}
 	
     curl_close($curl);
+}
+
+function trimText($string, $length) {
+    if (strlen($string) > $length) {
+		$value = trim(preg_replace('/\s+/', ' ', $string));
+		$valueTrim = explode( "\n", wordwrap($value, $length));
+		$value = $valueTrim[0].'...';
+	}
+	$value = mb_convert_encoding($value, "UTF-8", "HTML-ENTITIES"); // Allows special characters to be displayed on Discord.
+	return $value;
 }

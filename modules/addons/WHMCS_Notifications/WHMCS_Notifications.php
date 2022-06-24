@@ -21,6 +21,13 @@ function WHMCS_Notifications_config()
         'language' => 'english',
         'version' => '0.0.1',
         'fields' => [
+            'url' => [
+                'FriendlyName' => 'WHMCS URL',
+                'Type' => 'text',
+                'Size' => '300',
+                'Default' => 'https://example.com/admin',
+                'Description' => 'Your WHMCS Admin URL (Do NOT include a / at the end)',
+            ],
             'webhook_url' => [
                 'FriendlyName' => 'Webhook URL',
                 'Type' => 'text',
