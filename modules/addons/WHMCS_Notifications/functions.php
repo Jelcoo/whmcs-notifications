@@ -49,10 +49,10 @@ function send($data) {
 
 function trimText($string, $length) {
     if (strlen($string) > $length) {
-		$value = trim(preg_replace('/\s+/', ' ', $string));
-		$valueTrim = explode( "\n", wordwrap($value, $length));
-		$value = $valueTrim[0].'...';
+		$string = trim(preg_replace('/\s+/', ' ', $string));
+		$stringTrim = explode("\n", wordwrap($string, $length));
+		$string = $stringTrim[0].'...';
 	}
-	$value = mb_convert_encoding($value, "UTF-8", "HTML-ENTITIES"); // Allows special characters to be displayed on Discord.
-	return $value;
+	$string = mb_convert_encoding($string, "UTF-8", "HTML-ENTITIES"); // Allows special characters to be displayed on Discord.
+	return $string;
 }

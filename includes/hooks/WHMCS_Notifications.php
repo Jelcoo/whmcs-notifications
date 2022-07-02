@@ -17,7 +17,7 @@ if (isEnabled('TicketOpen')) {
                     "description" => "**".trimText($vars["subject"], 150)."**\n\n".trimText($vars["message"], 1500),
                     "url" => getSetting("url")."/supporttickets.php?action=view&id=".$vars["ticketid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "New Ticket Created"
                     ],
@@ -44,16 +44,16 @@ if (isEnabled('TicketOpen')) {
 if (isEnabled('TicketUserReply')) {
     add_hook('TicketUserReply', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
-                    "title" => "Ticket #".$vars["ticketmask"],
+                    "title" => "Ticket #".$vars["ticketid"],
                     "type" => "rich",
                     "description" => trimText($vars["message"], 1900),
                     "url" => getSetting("url")."/supporttickets.php?action=view&id=".$vars["ticketid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Ticket Reply"
                     ]
@@ -77,7 +77,7 @@ if (isEnabled('TicketFlagged')) {
                     "description" => "Ticket **#".$vars["ticketid"]."** got flagged to **".$vars["adminname"]."**",
                     "url" => getSetting("url")."/supporttickets.php?action=view&id=".$vars["ticketid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Ticket Flagged"
                     ]
@@ -101,7 +101,7 @@ if (isEnabled('TicketAddNote')) {
                     "description" => trimText($vars["message"], 1900),
                     "url" => getSetting("url")."/supporttickets.php?action=view&id=".$vars["ticketid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Ticket Note Added"
                     ],
@@ -132,7 +132,7 @@ if (isEnabled('InvoicePaid')) {
                     "description" => "Invoice **#".$vars["invoiceid"]."** got paid",
                     "url" => getSetting("url")."/invoices.php?action=edit&id=".$vars["invoiceid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Invoice Paid"
                     ]
@@ -156,7 +156,7 @@ if (isEnabled('InvoiceRefunded')) {
                     "description" => "Invoice **#".$vars["invoiceid"]."** has been refunded",
                     "url" => getSetting("url")."/invoices.php?action=edit&id=".$vars["invoiceid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Invoice Refunded"
                     ]
@@ -180,7 +180,7 @@ if (isEnabled('AddInvoiceLateFee')) {
                     "description" => "Invoice **#".$vars["invoiceid"]."** got a late fee added",
                     "url" => getSetting("url")."/invoices.php?action=edit&id=".$vars["invoiceid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Invoice Late Fee"
                     ]
@@ -204,7 +204,7 @@ if (isEnabled('PendingOrder')) {
                     "description" => "Order **#".$vars["orderid"]."** is pending",
                     "url" => getSetting("url")."/orders.php?action=view&id=".$vars["orderid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Order Pending"
                     ]
@@ -228,7 +228,7 @@ if (isEnabled('OrderPaid')) {
                     "description" => "Order **#".$vars["orderid"]."** has been paid",
                     "url" => getSetting("url")."/orders.php?action=view&id=".$vars["orderid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Order Paid"
                     ]
@@ -252,7 +252,7 @@ if (isEnabled('AcceptOrder')) {
                     "description" => "Order **#".$vars["orderid"]."** has been accepted",
                     "url" => getSetting("url")."/orders.php?action=view&id=".$vars["orderid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Order Accepted"
                     ]
@@ -276,7 +276,7 @@ if (isEnabled('CancelOrder')) {
                     "description" => "Order **#".$vars["orderid"]."** has been cancelled",
                     "url" => getSetting("url")."/orders.php?action=view&id=".$vars["orderid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Order Cancelled"
                     ]
@@ -300,7 +300,7 @@ if (isEnabled('CancelAndRefundOrder')) {
                     "description" => "Order **#".$vars["orderid"]."** has been cancelled and refundeded",
                     "url" => getSetting("url")."/orders.php?action=view&id=".$vars["orderid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Order Cancelled & Refunded"
                     ]
@@ -324,7 +324,7 @@ if (isEnabled('FraudOrder')) {
                     "description" => "Order **#".$vars["orderid"]."** has been marked as fraud",
                     "url" => getSetting("url")."/orders.php?action=view&id=".$vars["orderid"],
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Order Fraud"
                     ]
@@ -348,7 +348,7 @@ if (isEnabled('CancellationRequest')) {
                     "description" => "A cancellation request has been submitted for service **#".$vars["relid"]."**",
                     "url" => getSetting("url")."/cancelrequests.php",
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "Service Cancallation Request"
                     ]
@@ -384,7 +384,7 @@ if (isEnabled('AnnouncementAdd')) {
                     "description" => trimText($vars["title"], 100)."\n\n".trimText($vars["announcement"], 1800),
                     "url" => getSetting("url")."/cancelrequests.php",
                     "timestamp" => date("c", strtotime("now")),
-                    "color" => getSetting("color"),
+                    "color" => hexdec(getSetting("color")),
                     "author" => [
                         "name" => "New Announcement Created"
                     ]
