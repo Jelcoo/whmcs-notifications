@@ -8,7 +8,7 @@ require_once __DIR__ . '/../../modules/addons/WHMCS_Notifications/functions.php'
 if (isEnabled('TicketOpen')) {
     add_hook('TicketOpen', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -68,7 +68,7 @@ if (isEnabled('TicketUserReply')) {
 if (isEnabled('TicketFlagged')) {
     add_hook('TicketFlagged', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -92,7 +92,7 @@ if (isEnabled('TicketFlagged')) {
 if (isEnabled('TicketAddNote')) {
     add_hook('TicketAddNote', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -123,7 +123,7 @@ if (isEnabled('TicketAddNote')) {
 if (isEnabled('InvoicePaid')) {
     add_hook('InvoicePaid', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -147,7 +147,7 @@ if (isEnabled('InvoicePaid')) {
 if (isEnabled('InvoiceRefunded')) {
     add_hook('InvoiceRefunded', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -171,7 +171,7 @@ if (isEnabled('InvoiceRefunded')) {
 if (isEnabled('AddInvoiceLateFee')) {
     add_hook('AddInvoiceLateFee', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -195,7 +195,7 @@ if (isEnabled('AddInvoiceLateFee')) {
 if (isEnabled('PendingOrder')) {
     add_hook('PendingOrder', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -219,7 +219,7 @@ if (isEnabled('PendingOrder')) {
 if (isEnabled('OrderPaid')) {
     add_hook('OrderPaid', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -243,7 +243,7 @@ if (isEnabled('OrderPaid')) {
 if (isEnabled('AcceptOrder')) {
     add_hook('AcceptOrder', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -267,7 +267,7 @@ if (isEnabled('AcceptOrder')) {
 if (isEnabled('CancelOrder')) {
     add_hook('CancelOrder', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -291,7 +291,7 @@ if (isEnabled('CancelOrder')) {
 if (isEnabled('CancelAndRefundOrder')) {
     add_hook('CancelAndRefundOrder', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -315,7 +315,7 @@ if (isEnabled('CancelAndRefundOrder')) {
 if (isEnabled('FraudOrder')) {
     add_hook('FraudOrder', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -339,7 +339,7 @@ if (isEnabled('FraudOrder')) {
 if (isEnabled('CancellationRequest')) {
     add_hook('CancellationRequest', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
@@ -375,7 +375,7 @@ if (isEnabled('CancellationRequest')) {
 if (isEnabled('AnnouncementAdd')) {
     add_hook('AnnouncementAdd', 1, function($vars) {
         $json_data = json_encode([
-            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : null,
+            "content" => getSetting("tag") ? "<@&".getSetting("tag_role").">" : "",
             "tts" => false,
             "embeds" => [
                 [
