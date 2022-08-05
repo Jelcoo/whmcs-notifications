@@ -223,10 +223,10 @@ if (isEnabled('OrderPaid')) {
             "tts" => false,
             "embeds" => [
                 [
-                    "title" => "Order #".$vars["orderid"],
+                    "title" => "Order #".$vars["orderId"],
                     "type" => "rich",
-                    "description" => "Order **#".$vars["orderid"]."** has been paid",
-                    "url" => getSetting("url")."/orders.php?action=view&id=".$vars["orderid"],
+                    "description" => "Order **#".$vars["orderId"]."** has been paid",
+                    "url" => getSetting("url")."/orders.php?action=view&id=".$vars["orderId"],
                     "timestamp" => date("c", strtotime("now")),
                     "color" => hexdec(getSetting("color")),
                     "author" => [
